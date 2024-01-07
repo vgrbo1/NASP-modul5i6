@@ -1,10 +1,7 @@
 from itertools import combinations
 class KlikaINDSETGraf:
 
-    def __init__(self):
-        self.adjacencyList = {}
-
-    def __init__(self, adjacencyList):
+    def __init__(self, adjacencyList = {}):
         self.adjacencyList = adjacencyList
 
     def unosGrafa(self):

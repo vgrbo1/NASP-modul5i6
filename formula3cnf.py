@@ -1,11 +1,7 @@
 from itertools import product
 class Formula3CNF:
 
-    def __init__(self):
-        self.clauses = []
-        self.numOfVariables = 0
-    
-    def __init__(self, clauses):
+    def __init__(self, clauses = []):
         self.setClauses(clauses)
 
     def unos3CNF(self):
