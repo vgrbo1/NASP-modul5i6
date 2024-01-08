@@ -5,6 +5,7 @@ class KlikaINDSETGraf:
         self.adjacencyList = adjacencyList
 
     def unosGrafa(self):
+        self.adjacencyList = {}
         numberOfVertices = int(input("Unesite broj cvorova grafa:"))
         if numberOfVertices > 15:
             raise ValueError("Broj cvorova ne smije biti veci od 15")
@@ -14,6 +15,7 @@ class KlikaINDSETGraf:
             adjList = input()
             adjList = [int(x) for x in adjList.split()]
             self.adjacencyList[v] = adjList
+        
 
     def rjesenjeKIndset(self, k):
         kVertexSubsets = list(combinations(self.adjacencyList.keys(), k))

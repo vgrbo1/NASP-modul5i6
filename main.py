@@ -15,7 +15,7 @@ def main():
 
     # b = KlikaINDSETGraf()
     #b.unosGrafa()
-    # b.setAdjacencyList({})
+    # b.setAdjacencyList({1: [2, 6], 2: [1, 3, 5, 6], 3: [2,4,5,6], 4: [3,5], 5:[3,4,2,6], 6:[1,2,3,5]})
     # b.rjesenjeKClique(4)
 
     # f1 = Formula3CNF()
@@ -53,7 +53,7 @@ def main():
           graf.unosGrafa()
       elif choice == '3':
           if formula.rjesenje3CNF():
-              print("Formula je ispunjiva!")
+              print("Formula je ispunjiva.")
           else:
               print("Formula nije ispunjiva.")
       elif choice == '4':
@@ -69,34 +69,38 @@ def main():
           else:
               print(f"Ne postoji {k}-klika.")
       elif choice == '6':
-          values = [int(x) for x in input("Unesite vrijednosti logičkih varijabli (0 ili 1, odvojeno zarezom): ").split(',')]
+          values = input(f"Unesite {formula.numOfVariables} vrijednosti logičkih varijabli (0 ili 1, odvojeno zarezom): ")
+          values = [int(x) for x in values.split(',')]
           if formula.verifikacija3CNF(values):
-              print("Verifikacija uspješna!")
+              print("Formula je ispunjiva za zadane vrijednosti logičkih varijabli.")
           else:
-              print("Verifikacija nije uspješna.")
+              print("Formula nije ispunjiva za zadane vrijednosti logičkih varijabli.")
       elif choice == '7':
-          if graf.verifikacijaIndset():
-              print("Verifikacija skupa nezavisnih čvorova uspješna!")
+          vertices = input("Unesite čvorove razdvojene zarezom: ")
+          vertices = [int(x) for x in vertices.split(',')]
+          if graf.verifikacijaIndset(vertices):
+              print("Uneseni skup čvorova jeste nezavisni skup.")
           else:
-              print("Verifikacija skupa nezavisnih čvorova nije uspješna.")
+              print("Uneseni skup čvorova nije nezavisni skup.")
       elif choice == '8':
-          k = int(input("Unesite broj k-klike (k): "))
-          if graf.verifikacijaClique(k):
-              print(f"Verifikacija {k}-klike uspješna!")
+          vertices = input("Unesite čvorove razdvojene zarezom: ")
+          vertices = [int(x) for x in vertices.split(',')]
+          if graf.verifikacijaClique(vertices):
+              print("Uneseni skup čvorova jeste klika.")
           else:
-              print(f"Verifikacija {k}-klike nije uspješna.")
+              print("Uneseni skup čvorova nije klika.")
       elif choice == '9':
           adjacencyList, k, literalVertices = reduce3SATToIndSet(formula)
-          print("Reduced Graph - 3-SAT-TO-INDSET:")
+          print("3-SAT-TO-INDSET:")
           print("Adjacency List:", adjacencyList)
           print("k:", k)
-          print("Literal Vertices:", literalVertices)
+          #print("Literal Vertices:", literalVertices)
       elif choice == '10':
           adjacencyList, k, verticesAndLiterals = reduce3SATToClique(formula)
-          print("Reduced Graph - 3-SAT-TO-CLIQUE:")
+          print("3-SAT-TO-CLIQUE:")
           print("Adjacency List:", adjacencyList)
           print("k:", k)
-          print("Vertices and Literals:", verticesAndLiterals)
+          #print("Vertices and Literals:", verticesAndLiterals)
       elif choice == '11':
           print("Izlaz")
           break

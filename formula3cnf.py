@@ -5,7 +5,7 @@ class Formula3CNF:
         self.setClauses(clauses)
 
     def unos3CNF(self):
-
+        self.clauses = []
         variables = set()
         print("Unesite formulu u 3 CNF obliku:")
 
